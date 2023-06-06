@@ -2,7 +2,6 @@
 import random
 number = random.randint(-10000, 10000)
 last_digit = abs(number) % 10
-print(last_digit)
 res = 'Last digit of {} is {} and '.format(number, last_digit)
 if last_digit < 6:
     res = res + 'is less than 6'
