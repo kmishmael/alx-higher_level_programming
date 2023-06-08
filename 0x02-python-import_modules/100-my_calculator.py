@@ -5,13 +5,11 @@ from calculator_1 import add, sub, mul, div
 if __name__ == "__main__":
     ac = len(sys.argv) - 1
     if ac != 3:
-        print(sys.argv)
-        print('Usage: ./100-my_calculator.py <a> <operator> <b>')
+        print('Usage: ./100-my_ca`lculator.py <a> <operator> <b>')
         exit(1)
     a = int(sys.argv[1])
     operator = sys.argv[2]
     b = int(sys.argv[3])
-    res = 0
     if operator == '+':
         res = add(a, b)
     elif operator == '-':
