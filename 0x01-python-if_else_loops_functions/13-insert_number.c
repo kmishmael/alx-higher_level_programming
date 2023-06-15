@@ -1,32 +1,39 @@
 #include "lists.h"
 
-/**
- * insert_node - insert a number to a linked list
- * @head: a pointer the head of the linked list
- * @number: number to insert
- * Return: 0 or pointer to the new node
- */
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *node = *head, *new;
+    listint_t *current = NULL;
+    listint_t *new_node;
 
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
-		return (NULL);
-	new->n = number;
-
-	if (node == NULL || node->n >= number)
-	{
-		new->next = node;
-		*head = new;
-		return (new);
-	}
-
-	while (node && node->next && node->next->n < number)
-		node = node->next;
-
-	new->next = node->next;
-	node->next = new;
-
-	return (new);
+    if (head == NULL)
+    {
+        return (NULL);
+    }
+    current = *head;
+    new_node = malloc(sizeof(listint_t));
+    if (new_node == NULL)
+    {
+        return (NULL);
+    }
+    new_node->n = number;
+    new_node->next = NULL;
+    while (current != NULL)
+    {
+        if (current->n <= number)
+        {
+            if (current->next->n > number)
+            {
+                new_node->next = current->next;
+                current->next = new_node;
+                return (new_node);
+            }
+            else if (current->next == NULL)
+            {
+                current->next = new_node;
+                return (new_node);
+            }
+        }
+        current = current->next;
+    }
+    return (NULL);
 }
